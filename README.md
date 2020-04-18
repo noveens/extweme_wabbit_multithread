@@ -4,6 +4,7 @@ This fork implements Probabilistic Label Trees (PLTs) in Vowpal Wabbit for extre
 
 ## Setup Steps
 1. Need to change `BASE_PATH` in `xml_experiments/datasets4vw/xml_repo/get_warm_amz.sh#L5`
+2. Install `xclib`: [GitHub Link](https://github.com/kunaldahiya/pyxclib)
 
 ## How to run?
 1. `cd xml_experiments; ./run_warm_amz.sh` OR `./grid_search.sh`.
