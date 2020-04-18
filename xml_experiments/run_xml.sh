@@ -27,8 +27,7 @@ fi
 # fi
 
 TRAIN=${FILES_PREFIX}/${FILES_PREFIX}_train
-TEST=${FILES_PREFIX}/${FILES_PREFIX}_train
-# TEST=${FILES_PREFIX}/${FILES_PREFIX}_test
+TEST=${FILES_PREFIX}/${FILES_PREFIX}_test
 
 if [ ! -e $TRAIN ]; then
     TRAIN=${FILES_PREFIX}/${FILES_PREFIX}_train0
@@ -46,4 +45,6 @@ MODEL="models/${FILES_PREFIX}_$(echo $PARAMS | tr ' ' '_')"
 #fi
 
 # Tests model
-$TIMER $BIN -t -i $MODEL $TEST --top_k 5 -p preds_${FILES_PREFIX}
+THREADS=3
+python test_multithread.py $MODEL $TEST ${FILES_PREFIX}/ $THREADS
+# $TIMER $BIN -t -i  --top_k 5 -p preds_${FILES_PREFIX}
