@@ -2,6 +2,15 @@
 
 This fork implements Probabilistic Label Trees (PLTs) in Vowpal Wabbit for extreme multi-label classification.
 
+## Setup Steps
+1. Need to change `BASE_PATH` in `xml_experiments/datasets4vw/xml_repo/get_warm_amz.sh#L5`
+
+## How to run?
+1. `cd xml_experiments; ./run_warm_amz.sh` OR `./grid_search.sh`.
+
+## Notes
+1. The current default number of threads used for evaluation are `3`. For the WarmAmazonTitles-300K dataset, and a value of `33` for `-b` parameter in vowpal wabbit, this would result in 70 GB of RAM Consumption. This is because each thread would need to load it's own model.
+
 ## PLT options
 ```
 --plt arg               Use PLT for multi-label learning with arg labels
