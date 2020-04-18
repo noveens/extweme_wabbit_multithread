@@ -1,7 +1,6 @@
 from xclib.evaluation.xc_metrics import Metrics, compute_inv_propesity
 from xclib.data import data_utils as du
 from scipy.sparse import csr_matrix
-from tqdm import tqdm
 import numpy as np
 import warnings
 import time
@@ -67,7 +66,6 @@ class Evaluator:
         self.docs_train_pos = []; self.lbls_train_pos = []; at = 0
         f = open(self.DATA_DIR + "test_raw_ids.txt", 'r')
         print("Getting train:test mapping..")
-        pbar = tqdm(total = 231676)
         while 1:
             line = f.readline()
             if not line: break
@@ -80,9 +78,7 @@ class Evaluator:
                 self.docs_train_pos.append(at)
                 self.lbls_train_pos.append(l)
             at += 1
-            pbar.update(1)
         f.close()
-        pbar.close()
         
     def evaluate(self, score_mat):
         # Make evaluator

@@ -38,13 +38,9 @@ mkdir -p models
 MODEL="models/${FILES_PREFIX}_$(echo $PARAMS | tr ' ' '_')"
 
 # Trains model
-#if [ ! -e $MODEL ]; then
-    $TIMER $BIN --plt $K $TRAIN -f $MODEL --sgd $PARAMS -c
-    
-    #rm ${TRAIN}.c #remove cache file
-#fi
+$TIMER $BIN --plt $K $TRAIN -f $MODEL --sgd $PARAMS -c
 
 # Tests model
 THREADS=3
-python test_multithread.py $MODEL $TEST ${FILES_PREFIX}/ $THREADS
+$TIMER python test_multithread.py $MODEL $TEST ${FILES_PREFIX}/ $THREADS
 # $TIMER $BIN -t -i  --top_k 5 -p preds_${FILES_PREFIX}
